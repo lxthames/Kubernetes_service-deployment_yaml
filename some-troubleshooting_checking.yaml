@@ -1,0 +1,19 @@
+# Note that just "getting" gowebapp gives no indications of a problem.
+kubectl get service
+
+# Note that the endpoints field is blank. This means the service can't find any pods to send
+# requests to.
+kubectl describe service gowebapp
+
+# You can also list the endpoints by running the following command. The ``ENDPOINTS`` field here
+# should also be blank.
+kubectl get ep gowebapp
+
+# Note the list of selectors
+kubectl describe service gowebapp
+
+# Get a list of pods
+kubectl get pods
+
+# Note the labels applied to the pod don't match the selectors from the service
+kubectl get pod <name_of_a_gowebapp_pod> --show-labels
